@@ -27,7 +27,7 @@
         </div>
         <div class="col">
             <div id="performance"><h2>Performance Review: </h2>
-                <!-- <div>
+                <div>
                     <div class="chartBox">
                         <canvas id="myChart"></canvas>
                       </div>
@@ -62,14 +62,14 @@
                         );
                       </script>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>
-<% if(user && employee.performance !== []) { %>
+<% if(user && employee.performance.length === 0) { %>
     <form id="add-performance" method="POST" action="/employees/<%= employee._id %>/performances">
         <label for="qualityOfWork">Quality of Work: </label>
-        <select name="qualityOfWork" id="">
+        <select class="form-select" name="qualityOfWork" id="">
             <option value="default">--Select an option--</option>
             <option value="Exceeds expectations">Exceeds expectations</option>
             <option value="Meets expectations">Meets expectations</option>
@@ -77,7 +77,7 @@
             <option value="Unacceptable">Unacceptable</option>
         </select>
         <label for="attendance">Attendance: </label>
-        <select name="attendance" id="">
+        <select class="form-select" name="attendance" id="">
             <option value="default">--Select an option--</option>
             <option value="Exceeds expectations">Exceeds expectations</option>
             <option value="Meets expectations">Meets expectations</option>
@@ -85,7 +85,7 @@
             <option value="Unacceptable">Unacceptable</option>
         </select>
         <label for="reliability">Reliability: </label>
-        <select name="reliability" id="">
+        <select class="form-select" name="reliability" id="">
             <option value="default">--Select an option--</option>
             <option value="Exceeds expectations">Exceeds expectations</option>
             <option value="Meets expectations">Meets expectations</option>
@@ -93,7 +93,7 @@
             <option value="Unacceptable">Unacceptable</option>
         </select>
         <label for="communicationSkills">Communication Skills: </label>
-        <select name="communicationSkills" id="">
+        <select class="form-select" name="communicationSkills" id="">
             <option value="default">--Select an option--</option>
             <option value="Exceeds expectations">Exceeds expectations</option>
             <option value="Meets expectations">Meets expectations</option>
@@ -102,7 +102,7 @@
         </select>
 
         <label for="notes">Notes: </label>
-        <textarea name="notes" id="notes" cols="30" rows="10" placeholder="Add any additional notes"></textarea>
+        <textarea class="form-control" name="notes" id="notes" cols="30" rows="10" placeholder="Add any additional notes"></textarea>
         <input type="submit" value="Add a Performance Review">
     </form>
   <% } %>
