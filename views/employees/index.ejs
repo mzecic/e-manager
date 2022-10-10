@@ -1,0 +1,24 @@
+<%- include("../partials/header") %>
+
+<h1>Employees</h1>
+
+<table class="table">
+    <thead class="employee-list">
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Info</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider employee-list">
+    <% employees.forEach((e) => { %>
+      <tr>
+        <td><%= e.firstName %></td>
+        <td><%= e.lastName %></td>
+        <td><a href="/employees/<%= e._id %>">Show</a></td>
+      </tr>
+    <% }) %>
+    </tbody>
+  </table>
+
+<%- include("../partials/footer") %>

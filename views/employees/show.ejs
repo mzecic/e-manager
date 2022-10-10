@@ -1,0 +1,112 @@
+<%- include("../partials/header") %>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<h1><%= title %></h1>
+<table class="table">
+<thead class="employee-list">
+    <tr>
+    <th scope="col">Email</th>
+    <th scope="col">Phone Number</th>
+    <th scope="col">Start Time</th>
+    <th scope="col">End Time</th>
+    </tr>
+</thead>
+<tbody class="table-group-divider employee-list">
+    <tr>
+    <td><%= employee.email %></td>
+    <td><%= employee.phone %></td>
+    <td>Start time: <%= employee.startTime %></td>
+    <td>End time: <%= employee.endTime %></td>
+    </tr>
+</tbody>
+</table>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Salary: </h2>
+            <p id="salary"><span id="dollar-sign"><%= employee.salary[0] %></span><%= employee.salary.slice(1) %></p>
+        </div>
+        <div class="col">
+            <div id="performance"><h2>Performance Review: </h2>
+                <!-- <div>
+                    <div class="chartBox">
+                        <canvas id="myChart"></canvas>
+                      </div>
+                    <script>
+                        const labels = [
+                          'Quality of Work',
+                          'Attendance',
+                          'Reliability',
+                          'Communication Skills',
+                        ];
+
+                        const data = {
+                          labels: labels,
+                          datasets: [{
+                            label: 'Performance',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: [0, 25, 50, 100],
+                          }]
+                        };
+
+                        const config = {
+                          type: 'bar',
+                          data: data,
+                          options: {}
+                        };
+                      </script>
+                      <script>
+                        const myChart = new Chart(
+                          document.getElementById('myChart'),
+                          config
+                        );
+                      </script>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<% if(user && employee.performance !== []) { %>
+    <form id="add-performance" method="POST" action="/employees/<%= employee._id %>/performances">
+        <label for="qualityOfWork">Quality of Work: </label>
+        <select name="qualityOfWork" id="">
+            <option value="default">--Select an option--</option>
+            <option value="Exceeds expectations">Exceeds expectations</option>
+            <option value="Meets expectations">Meets expectations</option>
+            <option value="Needs improvement">Needs improvement</option>
+            <option value="Unacceptable">Unacceptable</option>
+        </select>
+        <label for="attendance">Attendance: </label>
+        <select name="attendance" id="">
+            <option value="default">--Select an option--</option>
+            <option value="Exceeds expectations">Exceeds expectations</option>
+            <option value="Meets expectations">Meets expectations</option>
+            <option value="Needs improvement">Needs improvement</option>
+            <option value="Unacceptable">Unacceptable</option>
+        </select>
+        <label for="reliability">Reliability: </label>
+        <select name="reliability" id="">
+            <option value="default">--Select an option--</option>
+            <option value="Exceeds expectations">Exceeds expectations</option>
+            <option value="Meets expectations">Meets expectations</option>
+            <option value="Needs improvement">Needs improvement</option>
+            <option value="Unacceptable">Unacceptable</option>
+        </select>
+        <label for="communicationSkills">Communication Skills: </label>
+        <select name="communicationSkills" id="">
+            <option value="default">--Select an option--</option>
+            <option value="Exceeds expectations">Exceeds expectations</option>
+            <option value="Meets expectations">Meets expectations</option>
+            <option value="Needs improvement">Needs improvement</option>
+            <option value="Unacceptable">Unacceptable</option>
+        </select>
+
+        <label for="notes">Notes: </label>
+        <textarea name="notes" id="notes" cols="30" rows="10" placeholder="Add any additional notes"></textarea>
+        <input type="submit" value="Add a Performance Review">
+    </form>
+  <% } %>
+
+
+
+<%- include("../partials/footer") %>
