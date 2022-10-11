@@ -21,9 +21,12 @@ const performanceSchema = new Schema({
     notes: {
         type: String,
     },
+    date: Date,
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true },
     userName: String,
     userAvatar: String
+}, {
+    timestamps: true
 })
 
 const employeeSchema = new Schema({
@@ -58,6 +61,8 @@ const employeeSchema = new Schema({
         required: true
     },
     performance: [performanceSchema]
+}, {
+    timestamps: true
 })
 
 

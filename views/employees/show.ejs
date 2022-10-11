@@ -1,6 +1,27 @@
 <%- include("../partials/header") %>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure you want to proceed?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          This action is irreversible!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <form action="/employees/<%= employee._id %>?_method=DELETE" method="POST"><button type="submit" class="btn btn-outline-danger">Delete</button></form>
+        </div>
+      </div>
+    </div>
+  </div>
+<nav>
+    <form action="/employees/<%= employee._id %>?_method=DELETE" method="POST"><button class="btn-show-page btn btn-outline-danger" id="delete" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button></form>
+    <a class="btn-show-page btn btn-outline-primary add-new" href="/employees/<%= employee._id %>/edit" role="button" id="edit-btn">Edit</a>
+</nav>
 <h1><%= title %></h1>
+
 <table class="table">
 <thead class="employee-list">
     <tr>
@@ -19,7 +40,7 @@
     </tr>
 </tbody>
 </table>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col">
             <h2>Salary: </h2>
@@ -27,46 +48,24 @@
         </div>
         <div class="col">
             <div id="performance"><h2>Performance Review: </h2>
-                <div>
-                    <div class="chartBox">
-                        <canvas id="myChart"></canvas>
-                      </div>
-                    <script>
-                        const labels = [
-                          'Quality of Work',
-                          'Attendance',
-                          'Reliability',
-                          'Communication Skills',
-                        ];
-
-                        const data = {
-                          labels: labels,
-                          datasets: [{
-                            label: 'Performance',
-                            backgroundColor: 'rgb(255, 99, 132)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [0, 25, 50, 100],
-                          }]
-                        };
-
-                        const config = {
-                          type: 'bar',
-                          data: data,
-                          options: {}
-                        };
-                      </script>
-                      <script>
-                        const myChart = new Chart(
-                          document.getElementById('myChart'),
-                          config
-                        );
-                      </script>
+                <div class="container-fluid">
+                    <ul class="perf-ul">
+                    <% employee.performance.forEach(function(p) { %>
+                        <h5><%= p.createdAt.toLocaleDateString() %></h5>
+                        <li><%= p.qualityOfWork %></li>
+                        <li><%= p.attendance %></li>
+                        <li><%= p.reliability %></li>
+                        <li><%= p.communicationSkills %></li>
+                        <p><%= p.notes %></p>
+                   <% }) %>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<% if(user && employee.performance.length === 0) { %>
+
+<% if(user) { %>
     <form id="add-performance" method="POST" action="/employees/<%= employee._id %>/performances">
         <label for="qualityOfWork">Quality of Work: </label>
         <select class="form-select" name="qualityOfWork" id="">
@@ -106,7 +105,5 @@
         <input type="submit" value="Add a Performance Review">
     </form>
   <% } %>
-
-
-
+  <script src="/public/javascripts/app.js"></script>
 <%- include("../partials/footer") %>

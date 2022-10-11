@@ -1,0 +1,92 @@
+<%- include("../partials/header") %>
+
+<div class="edit-container container-fluid">
+    <form class="edit-form" action="/employees/<%= employee._id %>?_method=PUT" method="POST">
+        <div class="row">
+        <div class="col">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name <span id="star">*</span></label>
+            <input type="text" class="form-control" name="firstName" value="<%= employee.firstName %>">
+        </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="middleName" class="form-label">Middle Name</label>
+                    <input type="text" class="form-control" name="middleName" value="<%= employee.middleName %>">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Last Name <span id="star">*</span></label>
+                    <input type="text" class="form-control" name="lastName" value="<%= employee.lastName %>">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address <span id="star">*</span></label>
+                    <input name="email" type="email" class="form-control" aria-describedby="emailHelp" value="<%= employee.email %>">
+                    <div id="emailHelp" class="form-text"></div>
+                </div>
+            </div>
+        </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Enter a telephone number (in the form xxx-xxx-xxxx): <span id="star">*</span></label>
+                <input type="text" class="form-control" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                required value="<%= employee.phone %>">
+            </div>
+
+        <div class="form-floating">
+            <select name="startTime"class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option selected><%= employee.startTime %></option>
+            <option value="1am">1am</option>
+            <option value="2am">2am</option>
+            <option value="3am">3am</option>
+            <option value="4am">4am</option>
+            <option value="5am">5am</option>
+            <option value="6am">6am</option>
+            <option value="7am">7am</option>
+            <option value="8am">8am</option>
+            <option value="9am">9am</option>
+            <option value="10am">10am</option>
+            <option value="11am">11am</option>
+            <option value="12am">12am</option>
+            </select>
+            <label for="startTime">Start Time</label>
+        </div>
+        <div class="form-floating">
+            <select name="endTime"class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option selected><%= employee.endTime %></option>
+            <option value="1pm">1pm</option>
+            <option value="2pm">2pm</option>
+            <option value="3pm">3pm</option>
+            <option value="4pm">4pm</option>
+            <option value="5pm">5pm</option>
+            <option value="6pm">6pm</option>
+            <option value="7pm">7pm</option>
+            <option value="8pm">8pm</option>
+            <option value="9pm">9pm</option>
+            <option value="10pm">10pm</option>
+            <option value="11pm">11pm</option>
+            <option value="12pm">12pm</option>
+            </select>
+            <label for="startTime">End Time</label>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <div class="form-floating">
+            <input name="salary" type="text" class="form-control" id="floatingInputGroup1" value="<%= employee.salary %>">
+            <label for="salary">Salary</label>
+            </div>
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+
+<%- include("../partials/footer") %>
