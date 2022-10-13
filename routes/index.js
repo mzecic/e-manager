@@ -3,13 +3,14 @@ var router = express.Router();
 // const fetch = require('node-fetch');
 const passport = require("passport");
 const employeeCtrl = require("../controllers/employees")
+const todoCtrl = require("../controllers/todos");
 const isLoggedIn = require("../config/ auth")
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'e-manager' });
-});
-router.get('/employees', isLoggedIn, employeeCtrl.index)
 
+router.get("/", isLoggedIn, todoCtrl.index);
+router.get('/employees', isLoggedIn, employeeCtrl.index)
+router.post("/todos", isLoggedIn, todoCtrl.create);
+router.delete("/todos/:id", isLoggedIn, todoCtrl.delete);
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
   'google',

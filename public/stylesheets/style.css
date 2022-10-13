@@ -20,6 +20,10 @@ select {
 .chart-data-div {
   display: none;
 }
+.chart h3 {
+  margin-top: 150px;
+  text-align: center;
+}
 
 .nav-main {
   margin: 0 auto;
@@ -54,6 +58,40 @@ select {
   margin: auto;
   height: 30vh;
   width: 30vw;
+}
+
+.todos div {
+  display: block;
+  /* margin: 80px 200px;
+  margin-right: 0px; */
+  width: 550px;
+  height: 464px;
+  border: 1px solid rgb(217, 211, 211);
+  border-radius: 24px;
+  padding: 0 38px 12px;
+}
+
+.todos div input {
+  border-radius: 8px;
+  border: 1px solid rgb(217, 211, 211);
+  padding: 5px;
+}
+
+.todos div button {
+  letter-spacing: 1px;
+  display: inline-block;
+  margin: 10px;
+  padding: 15px 25px;
+  border: 1px white solid;
+  border-radius: 1.6rem;
+  background-color: white;
+  transition: all 500ms;
+}
+
+.todos div button:hover {
+  border: 2px white solid;
+  box-shadow: 2px 2px 3px 4px rgb(82, 162, 243);
+  transform: translateY(-6px);
 }
 
 .edit-container {
@@ -117,23 +155,22 @@ nav.navbar {
   display: flex;
   justify-content: center;
   padding: 10px;
-  background-color: #A7C7E7;
+  background-color: rgb(214, 214, 214);
 }
 
 aside {
-  display: flex;
+  text-align: center;
   flex-direction: column;
   align-items: center;
-  width: 70%;
   height: 100%;
-  margin: 80px auto;
+  margin: 80px;
 }
 
 .weather {
-  display: inline-block;
+  display: block;
   width: 550px;
   height: 550px;
-  margin: 80px 50px;
+  /* margin: 80px 50px; */
 }
 a {
   letter-spacing: 1px;
@@ -210,7 +247,7 @@ a.login {
 }
 
 .offcanvas {
-  background-color: #A7C7E7;
+  background-color: rgb(214, 214, 214);
 }
 
 .chartBox {
@@ -289,5 +326,22 @@ button.shadow-btn-red {
 
 .shadow-btn-close:hover {
   box-shadow: 2px 2px 3px 4px rgb(49, 47, 47);
+  transform: translateY(-6px);
+}
+
+#todo-delete {
+  margin-left: 0px;
+  margin-right: 100px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 1px 15px;
+  border: 1px white solid;
+  border-radius: 1.6rem;
+  background-color: white;
+  transition: all 500ms;
+}
+
+#todo-delete:hover {
+  box-shadow: 2px 2px 3px 4px rgb(244, 2, 2);
   transform: translateY(-6px);
 }

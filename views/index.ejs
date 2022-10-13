@@ -6,9 +6,35 @@
     <a href="/charts"><button>Charts</button></a>
     <a href="/departments"><button>Departments</button></a>
 </nav>
-<div class="container-fluid">
-    <div class="row  align-items-top">
-        <div class="col">
+<aside>
+    <h3>Welcome to e-manager</h3>
+    <br>
+    <p>e-manager is a simple employee managment app with intuitive ui where
+        you can add, edit, view, and delete your employee data
+    </p>
+</aside>
+<div class="container">
+
+    <div class="row">
+        <div class="col-6 todos">
+            <div>
+                <br>
+                <h4>To-do list</h4>
+                <hr>
+                <form action="/todos" method="POST">
+                    <label for="content">Add a Todo</label>
+                    <input name="content" type="text">
+                    <button type="submit">Save todo</button>
+                </form>
+                <ul>
+                    <% todos.forEach(function(todo) { %>
+                        <br>
+                       <li><%= todo.content %><form style="display: inline" action="/todos/<%= todo._id %>?_method=DELETE" method="POST"><button id="todo-delete" type="submit">Delete</button></form></li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+        <div class="col-6">
             <div class="weather">
                 <script>
                     (function(d, s, id) {
@@ -45,17 +71,8 @@
                     </div>
                 </div>
             </div>
-                <div class="col">
-                    <aside>
-                        <h3>Welcome to e-manager</h3>
-                        <br>
-                        <p>e-manager is a simple employee managment app with intuitive ui where
-                            you can add, edit, view, and delete your employee data
-                        </p>
-                    </aside>
-                </div>
+        </div>
 
-    </div>
 </div>
 
 <%- include('./partials/footer') %>

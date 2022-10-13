@@ -3,4 +3,4 @@ const Schema = mongoose.Schema;
 
 
 
-module.exports = mongoose.model('Department', employeeSchema);
+module.exports = mongoose.model('Department', departmentSchema);
