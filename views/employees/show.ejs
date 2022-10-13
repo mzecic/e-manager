@@ -10,17 +10,17 @@
           This action is irreversible!
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-          <form action="/employees/<%= employee._id %>?_method=DELETE" method="POST"><button type="submit" class="btn btn-outline-danger">Delete</button></form>
+          <button type="button" class="shadow-btn-close btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <form action="/employees/<%= employee._id %>?_method=DELETE" method="POST"><button type="submit" class="shadow-btn-red btn btn-outline-danger">Delete</button></form>
         </div>
       </div>
     </div>
   </div>
 <nav>
-    <form action="/employees/<%= employee._id %>?_method=DELETE" method="POST"><button class="btn-show-page btn btn-outline-danger" id="delete" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button></form>
-    <a class="btn-show-page btn btn-outline-primary add-new" href="/employees/<%= employee._id %>/edit" role="button" id="edit-btn">Edit</a>
+    <form action="/employees/<%= employee._id %>?_method=DELETE" method="POST"><button class="shadow-btn-red btn-show-page btn btn-outline-danger" id="delete" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button></form>
+    <a class="shadow-btn btn-show-page btn btn-outline-primary add-new" href="/employees/<%= employee._id %>/edit" role="button" id="edit-btn">Edit</a>
 </nav>
-<h1><%= title %></h1>
+<h2><%= title %></h2>
 
 <table class="table">
 <thead class="employee-list">
@@ -29,6 +29,7 @@
     <th scope="col">Phone Number</th>
     <th scope="col">Start Time</th>
     <th scope="col">End Time</th>
+    <th scope="col">Department</th>
     </tr>
 </thead>
 <tbody class="table-group-divider employee-list">
@@ -37,28 +38,38 @@
     <td><%= employee.phone %></td>
     <td>Start time: <%= employee.startTime %></td>
     <td>End time: <%= employee.endTime %></td>
+    <td><%= employee.department %></td>
     </tr>
 </tbody>
 </table>
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h2>Salary: </h2>
+            <h3>Salary: </h3>
             <p id="salary"><span id="dollar-sign"><%= employee.salary[0] %></span><%= employee.salary.slice(1) %></p>
         </div>
         <div class="col">
-            <div id="performance"><h2>Performance Review: </h2>
+            <div id="performance"><h3>Performance Review: </h3>
                 <div class="container-fluid">
-                    <ul class="perf-ul">
-                    <% employee.performance.forEach(function(p) { %>
-                        <h5><%= p.createdAt.toLocaleDateString() %></h5>
-                        <li><%= p.qualityOfWork %></li>
-                        <li><%= p.attendance %></li>
-                        <li><%= p.reliability %></li>
-                        <li><%= p.communicationSkills %></li>
-                        <p><%= p.notes %></p>
-                   <% }) %>
-                    </ul>
+                    <div class="row">
+                        <% employee.performance.forEach(function(p) { %>
+                        <div class="perf-ul col-6">
+                            <ul class="perf-ul">
+                                <h5>Date: <%= p.createdAt.toLocaleDateString() %> <form action="/performances/<%= p._id %>?_method=DELETE" method="POST"><button class="hidden shadow-btn-red btn-show-page btn btn-outline-danger" id="delete" type="submit">Delete</button></form></h5>
+                                <li>Quality of Work: <%= p.qualityOfWork %></li>
+                                <li>Attendance: <%= p.attendance %></li>
+                                <li>Reliability: <%= p.reliability %></li>
+                                <li>Communication Skills: <%= p.communicationSkills %></li>
+                                <% if(p.notes) { %>
+                                    <p> Notes: <%= p.notes %></p>
+                                <% } else { %>
+                                    <p> Notes: N/A</p>
+                            <% } %>
+                            </ul>
+                    </div>
+                    <% }) %>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -102,7 +113,7 @@
 
         <label for="notes">Notes: </label>
         <textarea class="form-control" name="notes" id="notes" cols="30" rows="10" placeholder="Add any additional notes"></textarea>
-        <input type="submit" value="Add a Performance Review">
+        <input class="shadow-btn btn btn-outline-primary" type="submit" value="Add a Performance Review">
     </form>
   <% } %>
   <script src="/public/javascripts/app.js"></script>

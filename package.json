@@ -17,6 +17,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.6.4",
     "morgan": "~1.9.1",
+    "node-fetch": "^3.2.10",
     "partials": "^0.1.0",
     "passport": "^0.6.0",
     "passport-google-oauth": "^2.0.0"

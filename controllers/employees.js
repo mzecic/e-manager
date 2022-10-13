@@ -64,6 +64,7 @@ function editEmployee(req, res) {
 
 function update(req, res) {
     Employee.findById(req.params.id, function(err, employee) {
+        req.body.salary = "$" + req.body.salary;
         employee.updateOne(req.body, function(err) {
             if (err) {
                 console.log(err)
@@ -73,6 +74,3 @@ function update(req, res) {
         })
     })
 }
-
-
-

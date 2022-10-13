@@ -1,0 +1,76 @@
+<%- include("../partials/header") %>
+
+
+
+    <canvas id="myChart" width="768" height="768"></canvas>
+    <% { %>
+    <% let salesData = parseInt(0) %>
+    <% let prData = parseInt(0)  %>
+    <% let itData = parseInt(0)  %>
+    <% let hrData = parseInt(0)  %>
+    <% let legalData = parseInt(0) %>
+    <% employees.forEach(function(e) { %>
+
+    <% if (e.department === "Sales") { %>
+        <%  salesData += parseInt(1) %>
+    <% } else if (e.department === "PR and Marketing") { %>
+        <% prData += 1 %>
+    <% } else if (e.department === "IT")  { %>
+        <% itData += 1 %>
+    <% } else if (e.department === "HR") { %>
+        <% hrData += 1 %>
+    <% } else if (e.department === "Legal") { %>
+        <% legalData += 1 %>
+        <% } %>
+    <% }) %>
+    <div class="chart-data-div sales-data"><%= salesData %></div>
+    <div class="chart-data-div pr-data"><%= prData %></div>
+    <div class="chart-data-div it-data"><%= itData %></div>
+    <div class="chart-data-div hr-data"><%= hrData %></div>
+    <div class="chart-data-div legal-data"><%= legalData %></div>
+    <% } %>
+    <script>
+    const salesData = parseInt(document.querySelector("div.sales-data").innerText);
+    const prData = parseInt(document.querySelector("div.pr-data").innerText);
+    const itData = parseInt(document.querySelector("div.it-data").innerText);
+    const hrData = parseInt(document.querySelector("div.hr-data").innerText);
+    const legalData = parseInt(document.querySelector("div.legal-data").innerText);
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ["Sales", 'PR and Marketing', 'IT', 'HR', 'Legal'],
+            datasets: [{
+                label: '# of Employees',
+                data: [salesData, prData, itData, hrData, legalData],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    </script>
+
+<%- include("../partials/footer") %>

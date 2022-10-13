@@ -60,6 +60,10 @@ const employeeSchema = new Schema({
         type: String,
         required: true
     },
+    department: {
+        type: String,
+        required: true
+    },
     performance: [performanceSchema]
 }, {
     timestamps: true

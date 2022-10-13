@@ -58,7 +58,18 @@
           <option value="11pm">11pm</option>
           <option value="12pm">12pm</option>
         </select>
-        <label for="startTime">End Time</label>
+        <label for="endTime">End Time</label>
+      </div>
+      <div class="form-floating">
+        <select name="department"class="form-select" id="floatingSelect" aria-label="Floating label select example">
+          <option selected>Select a department</option>
+          <option value="Sales">Sales</option>
+          <option value="PR and Marketing">PR and Marketing</option>
+          <option value="HR">HR</option>
+          <option value="IT">IT</option>
+          <option value="Legal">Legal</option>
+        </select>
+        <label for="department">Department</label>
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
@@ -67,7 +78,7 @@
           <label for="salary">Salary</label>
         </div>
       </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="shadow-btn btn btn-outline-primary">Submit</button>
   </form>
 
 <%- include("../partials/footer") %>
