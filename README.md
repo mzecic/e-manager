@@ -21,7 +21,7 @@ Techologies used:
   
   Getting started:
   
-    --Please use this link to access the app ==> https://e-manager.onrender.com/
+    --Please use this link to access the app ==> https://e-manager.onrender.com/e-manager
     
   
  Future plans: Search query for employee list, more models
