@@ -20,3 +20,5 @@ toggleEl.forEach((el) => {
         })
     })
 })
+
+const snd = new Audio("../sounds/household_trash_bag_full_down_on_hard_ground_002.mp3")

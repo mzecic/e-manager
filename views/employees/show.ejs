@@ -11,7 +11,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="shadow-btn-close btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-          <form action="/employees/<%= employee._id %>?_method=DELETE" method="POST"><button type="submit" class="shadow-btn-red btn btn-outline-danger">Delete</button></form>
+          <form action="/employees/<%= employee._id %>?_method=DELETE" method="POST"><button onclick="snd.play()"type="submit" class="shadow-btn-red btn btn-outline-danger">Delete</button></form>
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@
                         <% employee.performance.forEach(function(p) { %>
                         <div class="perf-ul col-6">
                             <ul class="perf-ul">
-                                <h5>Date: <%= p.createdAt.toLocaleDateString() %> <form action="/performances/<%= p._id %>?_method=DELETE" method="POST"><button class="hidden shadow-btn-red btn-show-page btn btn-outline-danger" id="delete" type="submit">Delete</button></form></h5>
+                                <h5>Date: <%= p.createdAt.toLocaleDateString() %> <form action="/performances/<%= p._id %>?_method=DELETE" method="POST"><button onclick="snd.play()"class="hidden shadow-btn-red btn-show-page btn btn-outline-danger" id="delete" type="submit">Delete</button></form></h5>
                                 <li>Quality of Work: <%= p.qualityOfWork %></li>
                                 <li>Attendance: <%= p.attendance %></li>
                                 <li>Reliability: <%= p.reliability %></li>
