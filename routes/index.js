@@ -7,7 +7,7 @@ const todoCtrl = require("../controllers/todos");
 const isLoggedIn = require("../config/ auth")
 /* GET home page. */
 
-router.get("/", isLoggedIn, todoCtrl.index);
+router.get("/", todoCtrl.index);
 router.get('/employees', isLoggedIn, employeeCtrl.index)
 router.post("/todos", isLoggedIn, todoCtrl.create);
 router.delete("/todos/:id", isLoggedIn, todoCtrl.delete);
